@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+
+
+{% block top_head %}
+{% block title %}{% endblock %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <nav>
+        <img src="static/images/logo.png" alt="logo">
+        <h3>K&D Management Leave System</h3>
+        <i class="fas fa-user-circle user-icon" onclick="showContent('user')"></i>
+    </nav>
+    <aside>
+
+        <li onclick="showContent('home')">Home</li>
+        <li onclick="showContent('leaves')">Leaves</li>
+        <li onclick="showContent('apply')">Apply Leaves</li>
+
+    </aside>
+    <main>
+        <div class="top">
+            <h2>Hi! <span style="color: #007acc;">{{name}}</span>. Welcome to your leave portal</h2>
+            <button onclick="showContent('apply')">Add Leave +</button>
+        </div>
+
+        <div class="container2" id="home-content">
+            <div class="left-part">
+                <div class="uper">
+                    <div class="uper-box">
+                        <div class="uper-box-left">
+                            <span class="box-topic">Anual Leaves</span>
+                            {% set anual_counter = [0] %} {# Using a list to store the count #}
+                            {% for leave in leaves %}
+                            {% if leave.leave_type == "Annual Leave" %}
+                            {% set _ = anual_counter.append(anual_counter.pop() + 1) %} {# Increment the value #}
+                            {% endif %}
+                            {% endfor %}
+                            <div class="box-content">
+                                <h1 class="box-count">{{ anual_counter[0] }}</h1>
+                                <h1 class="box-count-dash">/</h1>
+                                <h1 class="box-count-total">20</h1>
+                            </div>
+
+                        </div>
+                        <div class="uper-box-left">
+                            <span class="box-topic">Casual Leaves</span>
+                            {% set casual_counter = [0] %} {# Using a list to store the count #}
+                            {% for leave in leaves %}
+                            {% if leave.leave_type == "Casual Leave" %}
+                            {% set _ = casual_counter.append(casual_counter.pop() + 1) %} {# Increment the value #}
+                            {% endif %}
+                            {% endfor %}
+
+                            <div class="box-content">
+                                <h1 class="box-count">{{ casual_counter[0] }}</h1>
+                                <h1 class="box-count-dash">/</h1>
+                                <h1 class="box-count-total">20</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uper-box">
+                        {% set short_leave_counter = [0] %} {# Using a list to store the count #}
+                        {% for leave in leaves %}
+                        {% if leave.leave_catogory == "Short Leave" %}
+                        {% set _ = short_leave_counter.append(short_leave_counter.pop() + 1) %} {# Increment the value
+                        #}
+                        {% endif %}
+                        {% endfor %}
+                        <div class="uper-box-left">
+                            <span class="box-topic">Short Leaves</span>
+                            <div class="box-content">
+                                <h1 class="box-count">{{ short_leave_counter[0] }}</h1>
+
+                            </div>
+                        </div>
+                        <div class="uper-box-left">
+                            {% set pending_leave_counter = [0] %} {# Using a list to store the count #}
+                            {% for leave in leaves %}
+                            {% if leave.status == "Pending" %}
+                            {% set _ = pending_leave_counter.append(pending_leave_counter.pop() + 1) %} {# Increment the
+                            value #}
+                            {% endif %}
+                            {% endfor %}
+                            <span class="box-topic">Pending Leaves</span>
+                            <div class="box-content">
+                                <h1 class="box-count">{{ pending_leave_counter[0] }}</h1>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lower">
+                    <div class="lower-box">
+                        <table class="lower-box-table">
+                            <thead>
+                                <tr>
+                                    <th class="lower-box-table-head">Employee Name</th>
+                                    <th class="lower-box-table-head">Employee Number</th>
+                                    <th class="lower-box-table-head">Leave Category</th>
+                                    <th class="lower-box-table-head">Start Date</th>
+                                    <th class="lower-box-table-head">End Date</th>
+                                    <th class="lower-box-table-head">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for leave in leve_info %}
+                                    {% if leave.start_date == today or leave.end_date == today %}
+                                        <tr>
+                                            <td class="lower-box-table-td">{{ leave.name }}</td>  <!-- User name -->
+                                            <td class="lower-box-table-td">{{ leave.emp_number }}</td>  <!-- User emp_number -->
+                                            <td class="lower-box-table-td">{{ leave.leave_category }}</td>
+                                            <td class="lower-box-table-td">{{ leave.start_date }}</td>
+                                            <td class="lower-box-table-td">{{ leave.end_date }}</td>
+                                            <td class="lower-box-table-td">{{ leave.status }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6" class="lower-box-table-td">No employees on leave today.</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                            
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="right-part">
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FColombo&showPrint=0&src=ZW4ubGsjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%230B8043"
+                    scrolling="no"></iframe>
+            </div>
+        </div>
+
+        <div id="leaves-content" class="container2" style="display: none;">
+            <div class="leaves-container">
+                <h3>Your Leave History</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Leave Type</th>
+                            <th>Leave Category</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for leave in leaves %}
+                        <tr>
+                            <td>{{leave.leave_type}}</td>
+                            <td>{{leave.leave_catogory}}</td>
+                            <td>{{leave.start_date}}</td>
+                            <td>{{leave.end_date}}</td>
+                            <td>{{leave.reason}}</td>
+                            <td>{{leave.status}}</td>
+                            <td><button>Edit</button></td>
+                        </tr>
+                        {% endfor %}
+                        <!-- More rows would go here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Apply Leaves Content (hidden by default) -->
+        <div id="apply-content" class="container2" style="display: none;">
+            <div class="apply-container">
+                <h3>Apply for Leave</h3>
+                <form action="/add_leave" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <div class="form-group">
+                        <label>Leave Type</label>
+                        <select name=leave_type>
+                            <option>-</option>
+                            <option>Annual Leave</option>
+                            <option>Casual Leave</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Leave Catogory</label>
+                        <select name="leave_catogory">
+                            <option>Full Day Leave</option>
+                            <option>Half Day Leave</option>
+                            <option>Short Leave</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" name="start_date">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" name="end_date">
+                    </div>
+                    <div class="form-group">
+                        <label>Reason</label>
+                        <textarea rows="4" name="reason"></textarea>
+                    </div>
+                    <button type="submit">Apply the Leave</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="user-content" class="container2" style="display: none;">
+            <div class="user-container">
+                <div class="user">
+                    <i class="fas fa-user-circle user-icon" id="setting-icon"></i>
+                    <h2><span style="color: #007acc;" class="user-h1">{{name}}</span></h2>
+                    <h2><span  class="user-h2">{{emp_number}}</span></h2>
+                    <h2><span style="color: #00c967;" class="user-h3">{{date_birth}}</span></h2>
+                    <form action="/log_out" method="POST">
+                        <button type="submit" class="logout">Logout</button>
+                      </form>
+                      
+                </div>
+                <div class="edit-user">
+                    <form action="">
+                        <input type="text" placeholder={{name}}>
+                        <input type="date" placeholder={{name}}>
+                        <input type="password" placeholder={{name}}>
+                        <input type="password" placeholder={{name}}>
+                        <button type="submit" class="edit_profile">Edit Profile</button>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="footer"></div>
+</div>
+</main>
+{% block footer %} {% endblock %}
+
+</div>
+<script>
+    function showContent(contentId) {
+        // Hide all content sections
+        document.getElementById('home-content').style.display = 'none';
+        document.getElementById('leaves-content').style.display = 'none';
+        document.getElementById('apply-content').style.display = 'none';
+        document.getElementById('user-content').style.display = 'none';
+
+        // Show the selected content section
+        document.getElementById(contentId + '-content').style.display = 'flex';
+
+        // You can add additional logic here to update the active state in the sidebar
+    }
+</script>
+{% endblock %}

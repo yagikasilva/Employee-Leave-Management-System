@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+
+{% block top_head %}
+<title>K&D Management</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+{% endblock %}
+
+
+
+{% block content %}
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="/add_user" method="POST">
+
+                <h1>Create Account</h1>
+                <br>
+                <input type="text" name="name" placeholder="Enter Name" required>
+                <input type="email" name="email" placeholder="Enter Email" required>
+                <input type="text" name="emp_number" placeholder="Enter Employ Number" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <input type="password" name="re-password" placeholder="Re Enter Password" required>
+                <input type="date" name="birthday" placeholder="Enter Date of Birth" required>
+                <button type="submit">Add User</button>
+            </form>
+        </div>
+
+
+
+        <div class="form-container sign-in">
+            <form action="/login_user" method="POST">
+                <h1>Sign In</h1><br>
+                <span>or use your Employee Number as the  user name</span><br><br>
+                <input type="text" name="emp_number" placeholder="Enter Employ Number" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <img src="static/images/logo.png" alt="logo" class="img">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <img src="static/images/logo.png" alt="logo" class="img">
+                    <h1>Hello User!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const container=document.getElementById('container');
+    const registerBtn=document.getElementById('register');
+    const loginBtn=document.getElementById('login');
+
+    registerBtn.addEventListener('click',()=>{
+        container.classList.add("active");
+    });
+     loginBtn.addEventListener('click',()=>{
+        container.classList.remove("active");
+     });
+
+
+
+
+</script>
+
+
+  </body>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer> </footer>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+body{
+    background-color: #1e1e1e;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 ;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+.login_area{
+    width: 40%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 100px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+
+    margin: 0;
+}
+input{
+    padding: 12px;
+    border-radius: 8px;
+    width: 60%;
+    margin: 0;
+    font-size: 1rem;
+   
+    
+}
+input:focus {
+    outline: none;
+    border: 2px solid #007bff; /* Highlight the input when focused */
+}
+
+input:hover {
+    background-color: #f0f8ff; /* Light background change on hover */
+}
+button {
+    padding: 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 20%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.google_logo{
+    
+    width: 6%;
+}
+
+
+img{
+    width: 130px;
+    border-radius: 100%;
+}

@@ -1,0 +1,628 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+body{
+    background-color: #000000;
+}
+
+
+.container {
+    min-height: 90vh;
+    /* Full viewport height */
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "navbar navbar"
+        "sidebar main"
+        "sidebar footer";
+    scroll-behavior: smooth;
+
+
+        
+}
+
+/* Navbar */
+nav {
+    grid-area: navbar;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Distributes items across the nav */
+    padding: 10px 50px;
+    background-color: transparent;
+    width: 94%;
+    z-index: 1000; /* Ensures it stays on top */
+}
+nav h3{
+    color: #0098ee;
+    margin: 0;
+    font-family: "Protest Revolution";
+     font-weight: 900;
+     font-size: 2rem;
+     text-decoration: overline;
+}
+i{
+    color: #eff4f9;
+    font-size: 4rem;
+}
+img {
+    width: 80px;
+    border-radius: 100%;
+}
+
+/* Sidebar */
+aside {
+    height: calc(100vh - 120px);
+    /* Adjusted for navbar height */
+    grid-area: sidebar;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 30px;
+    /* Matches navbar height */
+    align-self: start;
+    background-color: transparent;
+    overflow-y: auto;
+    /* Prevents weird stretching */
+    padding: 0px 20px 0px 30px;
+
+}
+aside li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    font-family: "Protest Revolution";
+    font-weight: 900;
+   letter-spacing: 2px;
+    font-optical-sizing: auto;
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    list-style-type: none;
+    font-size: 1.5rem;
+}
+/* Main Content */
+main {
+    grid-area: main;
+    padding: 1rem;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    background-color: lightgray;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Main Body Styling */
+.dbody {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: 6px;
+}
+
+/* Header */
+.body-header {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.body-header-box {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 3px 4px black;
+    width: 10rem;
+    height: 10rem;
+    padding: 50px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
+/* Main Content Grid */
+.body-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+    grid-template-rows: auto; /* Define rows, adjust as needed */
+    gap: 10px;
+    width: 100%; /* Ensures full width */
+}
+
+/* Styling for each div inside the grid */
+.body-main div {
+    background-color: aliceblue;
+    height: auto; /* Fixed height for consistency */
+    padding: 10px;
+    border-radius: 15px;
+}
+
+/* Custom styling for box 1 */
+.container2 {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch;
+    padding: 50px;
+    /* Ensures both parts have equal height */
+}
+
+.left-part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 15;
+    /* Makes it stretch equally as the right part */
+}
+.right-part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 0;
+    /* Makes it stretch equally as the right part */
+}
+.uper,
+.lower {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+    min-height: 150px;
+    /* Makes both upper and lower parts share equal height */
+}
+
+.uper-box,
+.lower-box {
+    flex: 2;
+    /* Ensures the boxes take up equal height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    
+}
+
+.uper-box {
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    background-image: url("static/images/background.png");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 50px; /* or "auto 50px" depending on the height you want */
+}
+
+
+.lower-box {
+    background-color: #1f1f1f;
+}
+
+.lower-box {
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    margin-top: 2rem;
+    font-family: "Iansui", cursive;
+    font-weight: 400;
+    font-style: normal;
+    max-height: 300px;
+    overflow: auto; /* Hides scrollbar outside table */
+}
+
+.lower-box-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes spacing between cells */
+}
+
+.lower-box-table-head {
+    background-color: #000000;
+    position: sticky;
+    top: 0; /* Stick to the top of .lower-box */
+    z-index: 10; /* Ensures header stays above scrolling content */
+}
+
+.lower-box-table-body {
+    display: block; /* Allows independent scrolling */
+    max-height: 250px; /* Adjust based on .lower-box height */
+    overflow-y: auto;
+}
+
+.lower-box-table-td {
+    padding-top: 9px;
+}
+
+.lower-box-table-btn {
+    color: red;
+    font-family: "Iansui", cursive;
+    font-weight: 800;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.right-part {
+    flex-grow: 1;
+    /* Makes the right part take up equal height */
+    display: flex;
+    align-items: center;
+    background-color:#eff4f9 ;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+iframe {
+    border: solid 1px transparent;
+    width: 550px;
+    height: 550px;
+    /* Matches the height of the left-part */
+}
+
+
+/* Top Section */
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 94%;
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.top h2 {
+    color: white;
+    margin: 0;
+    font-family: "Protest Revolution";
+     font-weight: 900;
+    
+
+    font-size: 2.3rem;}
+
+.top button {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 20px 50px;
+    border-radius: 50px;
+    border: none;
+    margin-left: auto;
+    font-family: "Protest Revolution";
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.box-topic{
+    font-family: "Protest Revolution";
+    font-weight: 900;
+   margin-bottom: 2rem;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    color: #ffff;
+    font-size: 2rem;
+}
+.uper-box-left{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.box-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    gap: 1px; /* Reduce the gap */
+}
+
+.box-count{
+    font-family: "Rakkas",serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+    color: #e5e510;
+    text-align: center;
+}
+.box-count-dash{
+    font-family: "Rakkas",serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3rem;
+    color: #b8b8b8;
+    text-align: right;
+    text-align: center;
+}
+.box-count-total{
+    font-family: "Rakkas",serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 2rem;
+    color: #e51010;
+    text-align: center;
+}
+
+
+.box-count ,
+.box-count-dash,
+.box-count-total {
+    line-height: 0.1rem; /* Reduce spacing */
+    margin-top: 9px;
+}
+
+
+
+.leaves-container{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 25px 50px 20px 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    margin-top: 2rem;
+    font-family: "Iansui", cursive;
+    font-weight: 400;
+    font-style: normal;
+    overflow: auto; /* Hides scrollbar outside table */
+}
+.leaves-container h3 {
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 2rem;
+    font-family: "Protest Revolution";
+    font-weight: 800;
+
+}
+table{
+    text-align: center;
+}
+table th{
+    background-color: #000000;
+    padding: 10px 0 10px 0 ;
+    top: 0; /* Stick to the top of .lower-box */
+    z-index: 10; /* Ensures header stays above scrolling content */
+}
+table td{
+    padding-top: 9px;
+}
+table td button{
+    color: red;
+    font-family: "Iansui", cursive;
+    font-weight: 800;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+}
+#apply-content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+.apply-container {
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 25px 50px 20px 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    margin-top: 2rem;
+}
+
+.apply-container h3 {
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    font-family: "Protest Revolution";
+    font-weight: 800;
+
+}
+
+.apply-container .form-group {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+}
+
+.apply-container label {
+    font-weight: 500;
+    color: #b0b0b0;
+    font-size: 14px;
+    font-family: "Protest Revolution";
+    font-weight: 500;
+}
+
+.apply-container select,
+.apply-container input[type="date"],
+.apply-container textarea {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    padding: 8px 10px;
+    color: #f0f0f0;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.apply-container textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.apply-container button[type="submit"] {
+    background-color: #3a7bd5;
+    color: white;
+    border: none;
+    padding: 10px;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+
+.user-container{
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 25px 100px 20px 100px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    margin-top: 2rem;
+    font-family: "Iansui", cursive;
+    font-weight: 400;
+    font-style: normal;
+    align-items: stretch;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+}
+#setting-icon {
+    font-size: 7rem;
+
+    margin-bottom: 15px;
+}
+.user-h2,.user-h1,.user-h3{
+    
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.user-h1{
+    font-family: "Rakkas", serif;
+    font-weight: 500;
+}
+.user-h2{
+    font-family: "DM Serif Text", serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #00c967;
+}
+.user-h3{
+    margin-top: -1.5rem;
+    font-size: 1.5rem;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+.logout{
+    color: red;
+    font-family: "Iansui", cursive;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+}
+.edit-user{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 50px;
+}
+
+.edit-user form{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.edit-user input {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+    font-family: "Iansui", cursive;
+    transition: border-color 0.2s ease;
+}
+
+.edit-user input:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+.edit-user input::placeholder {
+    color: #6d6d6d;
+    opacity: 1;
+}
+
+.user h2 {
+    margin: 0.3rem 0;
+    font-weight: normal;
+}
+
+/* Hover effects for better interactivity */
+.edit-user input:hover {
+    border-color: #4a4a4a;
+}
+
+.edit_profile{
+    background-color: #3a7bd5;
+    color: white;
+    border: none;
+    padding: 10px;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 5px;
+    width: 100%;
+}
+
